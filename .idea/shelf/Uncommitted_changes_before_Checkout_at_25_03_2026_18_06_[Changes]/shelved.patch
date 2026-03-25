@@ -1,0 +1,42 @@
+Index: galleryhub/src/main/java/com/example/exception/BaseExcepciton.java
+===================================================================
+diff --git a/galleryhub/src/main/java/com/example/exception/BaseExcepciton.java b/galleryhub/src/main/java/com/example/exception/BaseException.java
+rename from galleryhub/src/main/java/com/example/exception/BaseExcepciton.java
+rename to galleryhub/src/main/java/com/example/exception/BaseException.java
+--- a/galleryhub/src/main/java/com/example/exception/BaseExcepciton.java	
++++ b/galleryhub/src/main/java/com/example/exception/BaseException.java	
+@@ -1,8 +1,8 @@
+ package com.example.exception;
+ 
+-public class BaseExcepciton extends RuntimeException {
++public class BaseException extends RuntimeException {
+     private final ErrorMessage errorMessage;
+-    public BaseExcepciton(ErrorMessage errorMessage) {
++    public BaseException(ErrorMessage errorMessage) {
+         super(errorMessage.preapareMessage());
+         this.errorMessage = errorMessage;
+     }
+Index: galleryhub/src/main/java/com/example/service/impl/AdressServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.service.impl;\r\n\r\nimport com.example.exception.BaseExcepciton;\r\nimport com.example.exception.ErrorMessage;\r\nimport com.example.exception.MessageType;\r\nimport com.example.service.IAdressService;\r\nimport org.springframework.stereotype.Service;\r\n\r\n@Service\r\npublic class AdressServiceImpl implements IAdressService {\r\n    public void BaseException(){\r\n        throw new BaseExcepciton(new ErrorMessage(null, MessageType.NO_RECORD_EXIST));\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/galleryhub/src/main/java/com/example/service/impl/AdressServiceImpl.java b/galleryhub/src/main/java/com/example/service/impl/AdressServiceImpl.java
+--- a/galleryhub/src/main/java/com/example/service/impl/AdressServiceImpl.java	
++++ b/galleryhub/src/main/java/com/example/service/impl/AdressServiceImpl.java	
+@@ -1,6 +1,6 @@
+ package com.example.service.impl;
+ 
+-import com.example.exception.BaseExcepciton;
++import com.example.exception.BaseException;
+ import com.example.exception.ErrorMessage;
+ import com.example.exception.MessageType;
+ import com.example.service.IAdressService;
+@@ -9,6 +9,6 @@
+ @Service
+ public class AdressServiceImpl implements IAdressService {
+     public void BaseException(){
+-        throw new BaseExcepciton(new ErrorMessage(null, MessageType.NO_RECORD_EXIST));
++        throw new BaseException(new ErrorMessage(null, MessageType.NO_RECORD_EXIST));
+     }
+ }

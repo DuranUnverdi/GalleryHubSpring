@@ -1,0 +1,104 @@
+Index: galleryhub/src/main/java/com/example/handler/ApiError.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/galleryhub/src/main/java/com/example/handler/ApiError.java b/galleryhub/src/main/java/com/example/handler/ApiError.java
+new file mode 100644
+--- /dev/null	
++++ b/galleryhub/src/main/java/com/example/handler/ApiError.java	
+@@ -0,0 +1,9 @@
++package com.example.handler;
++
++import lombok.Data;
++
++@Data
++public class ApiError <E>{
++    private Integer status;
++ private Exception<E> exception;
++}
+Index: galleryhub/src/main/java/com/example/handler/GlobalExceptionHandler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/galleryhub/src/main/java/com/example/handler/GlobalExceptionHandler.java b/galleryhub/src/main/java/com/example/handler/GlobalExceptionHandler.java
+new file mode 100644
+--- /dev/null	
++++ b/galleryhub/src/main/java/com/example/handler/GlobalExceptionHandler.java	
+@@ -0,0 +1,52 @@
++package com.example.handler;
++
++import com.example.exception.BaseException;
++import org.springframework.http.ResponseEntity;
++import org.springframework.validation.ObjectError;
++import org.springframework.web.bind.MethodArgumentNotValidException;
++import org.springframework.web.bind.annotation.ControllerAdvice;
++import org.springframework.web.bind.annotation.ExceptionHandler;
++import org.springframework.web.context.request.WebRequest;
++
++import java.net.Inet4Address;
++import java.net.UnknownHostException;
++import java.util.HashMap;
++import java.util.List;
++import java.util.Map;
++
++@ControllerAdvice
++public class GlobalExceptionHandler {
++    @ExceptionHandler(BaseException.class)
++    public ResponseEntity<ApiError<?>> handleBaseException(BaseException ex, WebRequest request) throws UnknownHostException {
++       return ResponseEntity.badRequest().body(createApiError(ex.getMessage(), request));
++    }
++    @ExceptionHandler(MethodArgumentNotValidException.class)
++    public void handleMethodArgumentNotValidException(MethodArgumentNotValidException ex,WebRequest request) throws UnknownHostException {
++        Map<String, List<String> > map = new HashMap<>();
++        for (ObjectError error : ex.getBindingResult().getAllErrors()) {
++            String fieldName = error.getObjectName();
++            String errorMessage = error.getDefaultMessage();
++            if (!map.containsKey(fieldName)) {
++                map.put(fieldName, new java.util.ArrayList<>());
++            }
++            map.get(fieldName).add(errorMessage);
++         ResponseEntity.badRequest().body(createApiError(ex.getMessage(), request));
++    }
++
++    private String getHostName() throws UnknownHostException {
++        return Inet4Address.getLocalHost().getHostName();
++
++    }
++
++    public <E> ApiError<E> createApiError(E message, WebRequest request) throws UnknownHostException {
++        ApiError<E> apiError = new ApiError<>();
++        apiError.setStatus(400);
++        Exception<E> exception = new Exception<>();
++        exception.setPath(request.getDescription(false));
++        exception.setCreateTime(new java.util.Date());
++        exception.setMessage(message);
++        exception.setHostName(getHostName());
++        apiError.setException(exception);
++        return (ApiError<E>) apiError;
++    }
++}
+Index: galleryhub/src/main/java/com/example/handler/Exception.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/galleryhub/src/main/java/com/example/handler/Exception.java b/galleryhub/src/main/java/com/example/handler/Exception.java
+new file mode 100644
+--- /dev/null	
++++ b/galleryhub/src/main/java/com/example/handler/Exception.java	
+@@ -0,0 +1,13 @@
++package com.example.handler;
++
++import lombok.Data;
++
++import java.util.Date;
++
++@Data
++public class Exception<E> {
++    private String path;
++    private E message;
++    private Date createTime;
++    private String hostName;
++}
