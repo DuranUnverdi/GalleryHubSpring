@@ -1,0 +1,12 @@
+[33m5e35a86[m[33m ([m[1;36mHEAD -> [m[1;32mexceptionRule[m[33m)[m HEAD@{0}: merge origin/exceptionRule: Merge made by the 'ort' strategy.
+[33mb5614d5[m HEAD@{1}: reset: moving to b5614d5
+[33ma3d0e6d[m[33m ([m[1;31morigin/exceptionRule[m[33m)[m HEAD@{2}: checkout: moving from exceptionRule to exceptionRule
+[33ma3d0e6d[m[33m ([m[1;31morigin/exceptionRule[m[33m)[m HEAD@{3}: checkout: moving from master to exceptionRule
+[33m3f2041e[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{4}: checkout: moving from exceptionRule to master
+[33ma3d0e6d[m[33m ([m[1;31morigin/exceptionRule[m[33m)[m HEAD@{5}: checkout: moving from master to exceptionRule
+[33m3f2041e[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{6}: merge origin/master: Merge made by the 'ort' strategy.
+[33mb5614d5[m HEAD@{7}: commit: Added preapareMessage method to ErrorMessage class.
+[33m2e791c2[m HEAD@{8}: checkout: moving from exceptionRule to master
+[33ma3d0e6d[m[33m ([m[1;31morigin/exceptionRule[m[33m)[m HEAD@{9}: commit: Added preapareMessage method to ErrorMessage class.
+[33m2e791c2[m HEAD@{10}: checkout: moving from master to exceptionRule
+[33m2e791c2[m HEAD@{11}: commit (initial): Project Create

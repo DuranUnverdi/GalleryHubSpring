@@ -1,0 +1,418 @@
+[33mcommit a3d0e6dd407784f38bbea97bfa23625fc3917923[m[33m ([m[1;31morigin/exceptionRule[m[33m)[m
+Author: DuranUnverdi <duranunverdi1905@gmail.com>
+Date:   Wed Mar 25 15:26:04 2026 +0300
+
+    Added preapareMessage method to ErrorMessage class.
+
+[1mdiff --git a/.idea/.gitignore b/.idea/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..26d3352[m
+[1m--- /dev/null[m
+[1m+++ b/.idea/.gitignore[m
+[36m@@ -0,0 +1,3 @@[m
+[32m+[m[32m# Default ignored files[m
+[32m+[m[32m/shelf/[m
+[32m+[m[32m/workspace.xml[m
+[1mdiff --git a/.idea/compiler.xml b/.idea/compiler.xml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..00ba897[m
+[1m--- /dev/null[m
+[1m+++ b/.idea/compiler.xml[m
+[36m@@ -0,0 +1,22 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<project version="4">[m
+[32m+[m[32m  <component name="CompilerConfiguration">[m
+[32m+[m[32m    <annotationProcessing>[m
+[32m+[m[32m      <profile default="true" name="Default" enabled="true" />[m
+[32m+[m[32m      <profile name="Annotation profile for galleryhub" enabled="true">[m
+[32m+[m[32m        <sourceOutputDir name="target/generated-sources/annotations" />[m
+[32m+[m[32m        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />[m
+[32m+[m[32m        <outputRelativeToContentRoot value="true" />[m
+[32m+[m[32m        <processorPath useClasspath="false">[m
+[32m+[m[32m          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />[m
+[32m+[m[32m        </processorPath>[m
+[32m+[m[32m        <module name="galleryhub" />[m
+[32m+[m[32m      </profile>[m
+[32m+[m[32m    </annotationProcessing>[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m  <component name="JavacSettings">[m
+[32m+[m[32m    <option name="ADDITIONAL_OPTIONS_OVERRIDE">[m
+[32m+[m[32m      <module name="galleryhub" options="-parameters" />[m
+[32m+[m[32m    </option>[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m</project>[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/encodings.xml b/.idea/encodings.xml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..2786040[m
+[1m--- /dev/null[m
+[1m+++ b/.idea/encodings.xml[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<project version="4">[m
+[32m+[m[32m  <component name="Encoding">[m
+[32m+[m[32m    <file url="file://$PROJECT_DIR$/galleryhub/src/main/java" charset="UTF-8" />[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m</project>[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/galleryhub.iml b/.idea/galleryhub.iml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6054576[m
+[1m--- /dev/null[m
+[1m+++ b/.idea/galleryhub.iml[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<module version="4">[m
+[32m+[m[32m  <component name="AdditionalModuleElements">[m
+[32m+[m[32m    <content url="file://$MODULE_DIR$" />[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m</module>[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/jarRepositories.xml b/.idea/jarRepositories.xml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..712ab9d[m
+[1m--- /dev/null[m
+[1m+++ b/.idea/jarRepositories.xml[m
+[36m@@ -0,0 +1,20 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<project version="4">[m
+[32m+[m[32m  <component name="RemoteRepositoriesConfiguration">[m
+[32m+[m[32m    <remote-repository>[m
+[32m+[m[32m      <option name="id" value="central" />[m
+[32m+[m[32m      <option name="name" value="Central Repository" />[m
+[32m+[m[32m      <option name="url" value="https://repo.maven.apache.org/maven2" />[m
+[32m+[m[32m    </remote-repository>[m
+[32m+[m[32m    <remote-repository>[m
+[32m+[m[32m      <option name="id" value="central" />[m
+[32m+[m[32m      <option name="name" value="Maven Central repository" />[m
+[32m+[m[32m      <option name="url" value="https://repo1.maven.org/maven2" />[m
+[32m+[m[32m    </remote-repository>[m
+[32m+[m[32m    <remote-repository>[m
+[32m+[m[32m      <option name="id" value="jboss.community" />[m
+[32m+[m[32m      <option name="name" value="JBoss Community repository" />[m
+[32m+[m[32m      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />[m
+[32m+[m[32m    </remote-repository>[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m</project>[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/misc.xml b/.idea/misc.xml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..58f11ce[m
+[1m--- /dev/null[m
+[1m+++ b/.idea/misc.xml[m
+[36m@@ -0,0 +1,14 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<project version="4">[m
+[32m+[m[32m  <component name="ExternalStorageConfigurationManager" enabled="true" />[m
+[32m+[m[32m  <component name="MavenProjectsManager">[m
+[32m+[m[32m    <option name="originalFiles">[m
+[32m+[m[32m      <list>[m
+[32m+[m[32m        <option value="$PROJECT_DIR$/galleryhub/pom.xml" />[m
+[32m+[m[32m      </list>[m
+[32m+[m[32m    </option>[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">[m
+[32m+[m[32m    <output url="file://$PROJECT_DIR$/out" />[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m</project>[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/modules.xml b/.idea/modules.xml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..1e5cc1e[m
+[1m--- /dev/null[m
+[1m+++ b/.idea/modules.xml[m
+[36m@@ -0,0 +1,8 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<project version="4">[m
+[32m+[m[32m  <component name="ProjectModuleManager">[m
+[32m+[m[32m    <modules>[m
+[32m+[m[32m      <module fileurl="file://$PROJECT_DIR$/.idea/galleryhub.iml" filepath="$PROJECT_DIR$/.idea/galleryhub.iml" />[m
+[32m+[m[32m    </modules>[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m</project>[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..2b63946[m
+[1m--- /dev/null[m
+[1m+++ b/.idea/uiDesigner.xml[m
+[36m@@ -0,0 +1,124 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<project version="4">[m
+[32m+[m[32m  <component name="Palette2">[m
+[32m+[m[32m    <group name="Swing">[m
+[32m+[m[32m      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">[m
+[32m+[m[32m        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />[m
+[32m+[m[32m        <initial-values>[m
+[32m+[m[32m          <property name="text" value="Button" />[m
+[32m+[m[32m        </initial-values>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />[m
+[32m+[m[32m        <initial-values>[m
+[32m+[m[32m          <property name="text" value="RadioButton" />[m
+[32m+[m[32m        </initial-values>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />[m
+[32m+[m[32m        <initial-values>[m
+[32m+[m[32m          <property name="text" value="CheckBox" />[m
+[32m+[m[32m        </initial-values>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />[m
+[32m+[m[32m        <initial-values>[m
+[32m+[m[32m          <property name="text" value="Label" />[m
+[32m+[m[32m        </initial-values>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">[m
+[32m+[m[32m          <preferred-size width="150" height="-1" />[m
+[32m+[m[32m        </default-constraints>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">[m
+[32m+[m[32m          <preferred-size width="150" height="-1" />[m
+[32m+[m[32m        </default-constraints>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">[m
+[32m+[m[32m          <preferred-size width="150" height="-1" />[m
+[32m+[m[32m        </default-constraints>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">[m
+[32m+[m[32m        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">[m
+[32m+[m[32m          <preferred-size width="150" height="50" />[m
+[32m+[m[32m        </default-constraints>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">[m
+[32m+[m[32m        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">[m
+[32m+[m[32m          <preferred-size width="150" height="50" />[m
+[32m+[m[32m        </default-constraints>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">[m
+[32m+[m[32m        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">[m
+[32m+[m[32m          <preferred-size width="150" height="50" />[m
+[32m+[m[32m        </default-constraints>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">[m
+[32m+[m[32m          <preferred-size width="150" height="50" />[m
+[32m+[m[32m        </default-constraints>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">[m
+[32m+[m[32m          <preferred-size width="150" height="50" />[m
+[32m+[m[32m        </default-constraints>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">[m
+[32m+[m[32m          <preferred-size width="150" height="50" />[m
+[32m+[m[32m        </default-constraints>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">[m
+[32m+[m[32m          <preferred-size width="200" height="200" />[m
+[32m+[m[32m        </default-constraints>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">[m
+[32m+[m[32m          <preferred-size width="200" height="200" />[m
+[32m+[m[32m        </default-constraints>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">[m
+[32m+[m[32m          <preferred-size width="-1" height="20" />[m
+[32m+[m[32m        </default-constraints>[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">[m
+[32m+[m[32m        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />[m
+[32m+[m[32m      </item>[m
+[32m+[m[32m    </group>[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m</project>[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/vcs.xml b/.idea/vcs.xml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..94a25f7[m
+[1m--- /dev/null[m
+[1m+++ b/.idea/vcs.xml[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<project version="4">[m
+[32m+[m[32m  <component name="VcsDirectoryMappings">[m
+[32m+[m[32m    <mapping directory="$PROJECT_DIR$" vcs="Git" />[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m</project>[m
+\ No newline at end of file[m
+[1mdiff --git a/galleryhub/.mvn/wrapper/maven-wrapper.properties b/galleryhub/.mvn/wrapper/maven-wrapper.properties[m
+[1mnew file mode 100644[m
+[1mindex 0000000..8dea6c2[m
+[1m--- /dev/null[m
+[1m+++ b/galleryhub/.mvn/wrapper/maven-wrapper.properties[m
+[36m@@ -0,0 +1,3 @@[m
+[32m+[m[32mwrapperVersion=3.3.4[m
+[32m+[m[32mdistributionType=only-script[m
+[32m+[m[32mdistributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.12/apache-maven-3.9.12-bin.zip[m
+[1mdiff --git a/galleryhub/src/main/java/com/example/exception/BaseExcepciton.java b/galleryhub/src/main/java/com/example/exception/BaseExcepciton.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..18260e4[m
+[1m--- /dev/null[m
+[1m+++ b/galleryhub/src/main/java/com/example/exception/BaseExcepciton.java[m
+[36m@@ -0,0 +1,9 @@[m
+[32m+[m[32mpackage com.example.exception;[m
+[32m+[m
+[32m+[m[32mpublic class BaseExcepciton extends RuntimeException {[m
+[32m+[m[32m    private final ErrorMessage errorMessage;[m
+[32m+[m[32m    public BaseExcepciton(ErrorMessage errorMessage) {[m
+[32m+[m[32m        super(errorMessage.preapareMessage());[m
+[32m+[m[32m        this.errorMessage = errorMessage;[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[1mdiff --git a/galleryhub/src/main/java/com/example/exception/ErrorMessage.java b/galleryhub/src/main/java/com/example/exception/ErrorMessage.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..321978f[m
+[1m--- /dev/null[m
+[1m+++ b/galleryhub/src/main/java/com/example/exception/ErrorMessage.java[m
+[36m@@ -0,0 +1,25 @@[m
+[32m+[m[32mpackage com.example.exception;[m
+[32m+[m
+[32m+[m[32mimport lombok.AllArgsConstructor;[m
+[32m+[m[32mimport lombok.Data;[m
+[32m+[m[32mimport lombok.NoArgsConstructor;[m
+[32m+[m
+[32m+[m[32m@Data[m
+[32m+[m[32m@NoArgsConstructor[m
+[32m+[m[32m@AllArgsConstructor[m
+[32m+[m[32mpublic class ErrorMessage {[m
+[32m+[m[32m    private MessageType messageType;[m
+[32m+[m[32m    private String ofStatic;[m
+[32m+[m
+[32m+[m[32m    public ErrorMessage(MessageType messageType, MessageType messageType1) {[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public String preapareMessage() {[m
+[32m+[m[32m        StringBuilder stringBuilder = new StringBuilder();[m
+[32m+[m[32m        stringBuilder.append(messageType.getMessage());[m
+[32m+[m[32m        if (ofStatic != null) {[m
+[32m+[m[32m            stringBuilder.append(" : ").append(ofStatic);[m
+[32m+[m[32m        }[m
+[32m+[m[32m        return stringBuilder.toString();[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[1mdiff --git a/galleryhub/src/main/java/com/example/exception/MessageType.java b/galleryhub/src/main/java/com/example/exception/MessageType.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..946c1f8[m
+[1m--- /dev/null[m
+[1m+++ b/galleryhub/src/main/java/com/example/exception/MessageType.java[m
+[36m@@ -0,0 +1,15 @@[m
+[32m+[m[32mpackage com.example.exception;[m
+[32m+[m
+[32m+[m[32mimport lombok.Getter;[m
+[32m+[m
+[32m+[m[32m@Getter[m
+[32m+[m[32mpublic enum MessageType {[m
+[32m+[m[32m    NO_RECORD_EXIST("1004","Kayıt bulunamadı"),[m
+[32m+[m[32m    GENERAL_EXCEPTION("9999","Beklenmedik bir hata oluştu");[m
+[32m+[m[32m    private final String code;[m
+[32m+[m[32m    private final String message;[m
+[32m+[m[32m     MessageType(String code, String message) {[m
+[32m+[m[32m        this.code = code;[m
+[32m+[m[32m        this.message = message;[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[1mdiff --git a/galleryhub/src/main/java/com/example/service/IAdressService.java b/galleryhub/src/main/java/com/example/service/IAdressService.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0eff8aa[m
+[1m--- /dev/null[m
+[1m+++ b/galleryhub/src/main/java/com/example/service/IAdressService.java[m
+[36m@@ -0,0 +1,4 @@[m
+[32m+[m[32mpackage com.example.service;[m
+[32m+[m
+[32m+[m[32mpublic interface IAdressService {[m
+[32m+[m[32m}[m
+[1mdiff --git a/galleryhub/src/main/java/com/example/service/impl/AdressServiceImpl.java b/galleryhub/src/main/java/com/example/service/impl/AdressServiceImpl.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..d3d8584[m
+[1m--- /dev/null[m
+[1m+++ b/galleryhub/src/main/java/com/example/service/impl/AdressServiceImpl.java[m
+[36m@@ -0,0 +1,14 @@[m
+[32m+[m[32mpackage com.example.service.impl;[m
+[32m+[m
+[32m+[m[32mimport com.example.exception.BaseExcepciton;[m
+[32m+[m[32mimport com.example.exception.ErrorMessage;[m
+[32m+[m[32mimport com.example.exception.MessageType;[m
+[32m+[m[32mimport com.example.service.IAdressService;[m
+[32m+[m[32mimport org.springframework.stereotype.Service;[m
+[32m+[m
+[32m+[m[32m@Service[m
+[32m+[m[32mpublic class AdressServiceImpl implements IAdressService {[m
+[32m+[m[32m    public void BaseException(){[m
+[32m+[m[32m        throw new BaseExcepciton(new ErrorMessage(null, MessageType.NO_RECORD_EXIST));[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[1mdiff --git a/galleryhub/src/main/resources/application.properties b/galleryhub/src/main/resources/application.properties[m
+[1mindex 37dbe08..6810e98 100644[m
+[1m--- a/galleryhub/src/main/resources/application.properties[m
+[1m+++ b/galleryhub/src/main/resources/application.properties[m
+[36m@@ -4,10 +4,7 @@[m [mspring.jpa.properties.hibernate.default_schema=galleryhub[m
+ spring.datasource.username=postgres[m
+ spring.datasource.password=Du142536***[m
+ spring.jpa.hibernate.ddl-auto=update[m
+[31m-[m
+ spring.jpa.show-sql=true[m
+ spring.jpa.properties.hibernate.format_sql=true[m
+[31m-[m
+ logging.level.org.hibernate.SQL=DEBUG[m
+[31m-[m
+ logging.level.org.hibernate.orm.jdbc.bind=TRACE[m
+\ No newline at end of file[m
+[1mdiff --git a/galleryhub/src/test/java/com/example/galleryhub/GalleryhubApplicationTests.java b/galleryhub/src/test/java/com/example/galleryhub/GalleryhubApplicationTests.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..57ac687[m
+[1m--- /dev/null[m
+[1m+++ b/galleryhub/src/test/java/com/example/galleryhub/GalleryhubApplicationTests.java[m
+[36m@@ -0,0 +1,13 @@[m
+[32m+[m[32mpackage com.example.galleryhub;[m
+[32m+[m
+[32m+[m[32mimport org.junit.jupiter.api.Test;[m
+[32m+[m[32mimport org.springframework.boot.test.context.SpringBootTest;[m
+[32m+[m
+[32m+[m[32m@SpringBootTest[m
+[32m+[m[32mclass GalleryhubApplicationTests {[m
+[32m+[m
+[32m+[m	[32m@Test[m
+[32m+[m	[32mvoid contextLoads() {[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m[32m}[m

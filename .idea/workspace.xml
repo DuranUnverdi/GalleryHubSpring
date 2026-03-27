@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd2d96b0-da6a-485d-bb01-3a68d07bfe4d" name="Changes" comment="Added preapareMessage method to ErrorMessage class." />
+    <list default="true" id="dd2d96b0-da6a-485d-bb01-3a68d07bfe4d" name="Changes" comment="Added preapareMessage method to ErrorMessage class.">
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/handler/ApiError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/handler/Exception.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/handler/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_03_2026_18_06__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_03_2026_18_06__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_03_2026_18_06__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_03_2026_18_06__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_03_2026_18_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_03_2026_18_08__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,6 +75,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GalleryhubApplicationStarter" />
         <item itemvalue="Application.GalleryhubApplicationStarter" />
         <item itemvalue="Application.GalleryhubApplicationStarter" />
       </list>
