@@ -12,4 +12,11 @@ public enum MessageType {
         this.code = code;
         this.message = message;
     }
+    public String getMessage() {
+        return message;
+    }
+
+     public String getCode() {
+         return code;
+     }
 }
