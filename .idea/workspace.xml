@@ -4,15 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd2d96b0-da6a-485d-bb01-3a68d07bfe4d" name="Changes" comment="Refactor: Improved exception handling in GlobalExceptionHandler&#10;&#10;- Enhanced `handleException` method to process `MethodArgumentNotValidException` with detailed field error mapping.&#10;- Updated `ApiError` and `Exception` classes to better structure error responses.&#10;- Added utility methods for error message handling and hostname retrieval.">
-      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/constants/constant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/jwt/JWTAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/jwt/JWTService.java" afterDir="false" />
+    <list default="true" id="dd2d96b0-da6a-485d-bb01-3a68d07bfe4d" name="Changes" comment="&quot;Refactor JWTAuthenticationFilter to use constructor injection and improve exception handling&quot;">
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/constants/SecurityConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_03_2026_18_06_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_03_2026_18_06__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galleryhub/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/exception/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/exception/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/handler/ApiError.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/handler/ApiError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/handler/Exception.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/handler/Exception.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/jwt/JWTAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/jwt/JWTAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galleryhub/src/test/java/com/example/galleryhub/GalleryhubApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/test/java/com/example/galleryhub/GalleryhubApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +117,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774616690501</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="&quot;Refactor JWTAuthenticationFilter to use constructor injection and improve exception handling&quot;">
+      <option name="closed" value="true" />
+      <created>1774978325028</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1774978325028</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -133,6 +143,7 @@
     <MESSAGE value="Project Create" />
     <MESSAGE value="Added preapareMessage method to ErrorMessage class." />
     <MESSAGE value="Refactor: Improved exception handling in GlobalExceptionHandler&#10;&#10;- Enhanced `handleException` method to process `MethodArgumentNotValidException` with detailed field error mapping.&#10;- Updated `ApiError` and `Exception` classes to better structure error responses.&#10;- Added utility methods for error message handling and hostname retrieval." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor: Improved exception handling in GlobalExceptionHandler&#10;&#10;- Enhanced `handleException` method to process `MethodArgumentNotValidException` with detailed field error mapping.&#10;- Updated `ApiError` and `Exception` classes to better structure error responses.&#10;- Added utility methods for error message handling and hostname retrieval." />
+    <MESSAGE value="&quot;Refactor JWTAuthenticationFilter to use constructor injection and improve exception handling&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Refactor JWTAuthenticationFilter to use constructor injection and improve exception handling&quot;" />
   </component>
 </project>
