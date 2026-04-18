@@ -1,6 +1,6 @@
 package com.example.config;
 
-import com.example.exception.BaseExcepciton;
+import com.example.exception.BaseException;
 import com.example.exception.ErrorMessage;
 import com.example.exception.MessageType;
 import com.example.model.User;
@@ -29,7 +29,7 @@ public class AppConfig {
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
                 Optional<User> optionalUser = userRepository.findByUsername(username);
                 if (optionalUser.isEmpty()) {
-                   throw new BaseExcepciton(new ErrorMessage(MessageType.USERNAME_NOT_FOUND,username));
+                   throw new BaseException(new ErrorMessage(MessageType.USERNAME_NOT_FOUND,username));
                 }
                 return optionalUser.get();
 

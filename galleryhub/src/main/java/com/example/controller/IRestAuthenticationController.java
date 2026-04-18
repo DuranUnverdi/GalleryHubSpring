@@ -1,0 +1,8 @@
+package com.example.controller;
+
+import com.example.dto.AuthRequest;
+import com.example.dto.DtoUser;
+
+public interface IRestAuthenticationController {
+    public RootEntity<DtoUser> register(AuthRequest authRequest);
+}

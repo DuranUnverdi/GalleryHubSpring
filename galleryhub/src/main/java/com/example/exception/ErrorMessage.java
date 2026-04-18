@@ -6,20 +6,25 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class ErrorMessage {
-    private MessageType messageType;
-    private String ofStatic;
 
-    public ErrorMessage(MessageType messageType, MessageType messageType1) {
+    private MessageType messageType;
+    private String detail;
+
+    public ErrorMessage(MessageType messageType, String detail) {
+        this.messageType = messageType;
+        this.detail = detail;
     }
 
-    public String preapareMessage() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(messageType.getMessage());
-        if (ofStatic != null) {
-            stringBuilder.append(" : ").append(ofStatic);
+    public String prepareMessage() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(messageType.getMessage());
+
+        if (detail != null) {
+            sb.append(" : ").append(detail);
         }
-        return stringBuilder.toString();
+
+        return sb.toString();
     }
 }

@@ -1,6 +1,6 @@
 package com.example.handler;
 
-import com.example.exception.BaseExcepciton;
+import com.example.exception.BaseException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -14,8 +14,8 @@ import java.util.Map;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(BaseExcepciton.class)
-    public ResponseEntity<ApiError<?>> handleException(BaseExcepciton e, WebRequest request) {
+    @ExceptionHandler(BaseException.class)
+    public ResponseEntity<ApiError<?>> handleException(BaseException e, WebRequest request) {
        return ResponseEntity.badRequest().body(createApiError(e.getMessage(), request));
     }
     private String getHostName(WebRequest request) {

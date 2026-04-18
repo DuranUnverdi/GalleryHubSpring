@@ -4,17 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd2d96b0-da6a-485d-bb01-3a68d07bfe4d" name="Changes" comment="&quot;Refactor JWTAuthenticationFilter to use constructor injection and improve exception handling&quot;">
-      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/config/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/constants/SecurityConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_03_2026_18_06_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_03_2026_18_06__Changes_1.xml" beforeDir="false" />
+    <list default="true" id="dd2d96b0-da6a-485d-bb01-3a68d07bfe4d" name="Changes" comment="Add security configuration and user repository&#10;&#10;- Introduced `AppConfig` for user authentication management, including `UserDetailsService` and password encoding.&#10;- Created `SecurityConfig` to define security filter chain and manage HTTP security settings.&#10;- Added `SecurityConstant` for defining API endpoint constants related to authentication.&#10;- Implemented `UserRepository` interface for user data access with a method to find users by username.">
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/controller/IRestAuthenticationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/controller/RestBaseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/controller/RootEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/controller/impl/RestAuthenticationControllerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/dto/AuthRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/dto/DtoBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/dto/DtoUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/exception/BaseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/service/IAuthenticationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/service/impl/AuthenticationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/exception/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/exception/MessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galleryhub/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/exception/BaseExcepciton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/exception/ErrorMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/exception/ErrorMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/handler/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/handler/GlobalExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/jwt/JWTAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/jwt/JWTAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/galleryhub/src/test/java/com/example/galleryhub/GalleryhubApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/test/java/com/example/galleryhub/GalleryhubApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/model/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/model/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/service/impl/AdressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/service/impl/AdressServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/starter/GalleryhubApplicationStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/galleryhub/src/main/java/com/example/starter/GalleryhubApplicationStarter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,16 +64,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GalleryhubApplicationStarter.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Emrah/Desktop/Java Dersleri/galleryhub&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GalleryhubApplicationStarter.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Emrah/Desktop/Java Dersleri/galleryhub",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="GalleryhubApplicationStarter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.starter.GalleryhubApplicationStarter" />
@@ -125,7 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774978325028</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add security configuration and user repository&#10;&#10;- Introduced `AppConfig` for user authentication management, including `UserDetailsService` and password encoding.&#10;- Created `SecurityConfig` to define security filter chain and manage HTTP security settings.&#10;- Added `SecurityConstant` for defining API endpoint constants related to authentication.&#10;- Implemented `UserRepository` interface for user data access with a method to find users by username.">
+      <option name="closed" value="true" />
+      <created>1775229915605</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1775229915605</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,6 +166,7 @@
     <MESSAGE value="Added preapareMessage method to ErrorMessage class." />
     <MESSAGE value="Refactor: Improved exception handling in GlobalExceptionHandler&#10;&#10;- Enhanced `handleException` method to process `MethodArgumentNotValidException` with detailed field error mapping.&#10;- Updated `ApiError` and `Exception` classes to better structure error responses.&#10;- Added utility methods for error message handling and hostname retrieval." />
     <MESSAGE value="&quot;Refactor JWTAuthenticationFilter to use constructor injection and improve exception handling&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Refactor JWTAuthenticationFilter to use constructor injection and improve exception handling&quot;" />
+    <MESSAGE value="Add security configuration and user repository&#10;&#10;- Introduced `AppConfig` for user authentication management, including `UserDetailsService` and password encoding.&#10;- Created `SecurityConfig` to define security filter chain and manage HTTP security settings.&#10;- Added `SecurityConstant` for defining API endpoint constants related to authentication.&#10;- Implemented `UserRepository` interface for user data access with a method to find users by username." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add security configuration and user repository&#10;&#10;- Introduced `AppConfig` for user authentication management, including `UserDetailsService` and password encoding.&#10;- Created `SecurityConfig` to define security filter chain and manage HTTP security settings.&#10;- Added `SecurityConstant` for defining API endpoint constants related to authentication.&#10;- Implemented `UserRepository` interface for user data access with a method to find users by username." />
   </component>
 </project>
